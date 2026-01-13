@@ -132,7 +132,6 @@ export function useLibraryOperational(): OperationalStatus {
     
     // Listen for settings update event to immediately re-check
     const handleSettingsUpdate = () => {
-      console.log('[useLibraryOperational] Settings updated, re-checking status...');
       // Reset warning flag on settings update
       warningShownRef.current = false;
       sessionStorage.removeItem('library-warning-shown');

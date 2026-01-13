@@ -1,7 +1,6 @@
 'use client';
 
 import { useAuth } from '@/lib/auth';
-import { useLibraryOperational } from '@/hooks/use-library-operational';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { SuperAdminSidebar } from '@/components/layout/SuperAdminSidebar';
 import { Header } from '@/components/layout/Header';
@@ -13,8 +12,6 @@ export default function SuperAdminLayout({
   children: React.ReactNode;
 }) {
   const { isLoading } = useAuth();
-  // Initialize operational hook at layout level for toast warnings on all pages
-  useLibraryOperational();
 
   return (
     <SidebarProvider>

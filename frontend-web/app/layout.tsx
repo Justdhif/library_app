@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AuthProvider } from '@/lib/auth';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { LanguageProvider } from '@/lib/language-context';
+import { OperationalProvider } from '@/lib/operational-context';
 import { Toaster } from '@/components/ui/sonner';
 import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
@@ -37,7 +38,9 @@ export default function RootLayout({
               zIndex={99999}
             />
             <AuthProvider>
-              {children}
+              <OperationalProvider>
+                {children}
+              </OperationalProvider>
               <Toaster 
                 position="top-right"
                 duration={4000}

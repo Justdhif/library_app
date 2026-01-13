@@ -2,14 +2,19 @@
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Clock, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
-import { useLibraryOperational } from '@/hooks/use-library-operational';
+import { useOperationalStatus } from '@/lib/operational-context';
 import { useLanguage } from '@/lib/language-context';
 
 export function OperationalStatusBanner() {
-  const { isOperational, isLoading, reason, openingTime, closingTime, nextOpenTime } = useLibraryOperational();
+  const { isOperational, isLoading, reason, openingTime, closingTime, nextOpenTime } = useOperationalStatus();
   const { t } = useLanguage();
 
   // Don't show banner until data is loaded
+  if (isLoading) {
+    return null;
+  }
+  
+  // If still no data after loading, don't show banner
   if (!openingTime || !closingTime) {
     return null;
   }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/auth';
 import { useLanguage } from '@/lib/language-context';
-import { useLibraryOperational } from '@/hooks/use-library-operational';
+import { useOperationalStatus } from '@/lib/operational-context';
 import NProgress from 'nprogress';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import {
@@ -102,7 +102,7 @@ export function SuperAdminSidebar() {
   const { user, logout, isLoading } = useAuth();
   const { t } = useLanguage();
   const { open } = useSidebar();
-  const { isOperational, isLoading: isLoadingStatus } = useLibraryOperational();
+  const { isOperational, isLoading: isLoadingStatus } = useOperationalStatus();
 
   const handleNavigation = (href: string) => {
     NProgress.start();

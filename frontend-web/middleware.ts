@@ -34,13 +34,13 @@ export async function middleware(request: NextRequest) {
   const isAuthenticated = !!authTokenCookie;
   const userRole = userRoleCookie?.value || 'member';
   
-  console.log('[Middleware]', {
-    pathname,
-    isAuthenticated,
-    userRole,
-    hasAuthToken: !!authTokenCookie,
-    hasRoleCookie: !!userRoleCookie,
-  });
+  // console.log('[Middleware]', {
+  //   pathname,
+  //   isAuthenticated,
+  //   userRole,
+  //   hasAuthToken: !!authTokenCookie,
+  //   hasRoleCookie: !!userRoleCookie,
+  // });
 
   // Redirect authenticated users from login/register to dashboard
   if (isAuthenticated && (pathname === '/login' || pathname === '/register')) {
